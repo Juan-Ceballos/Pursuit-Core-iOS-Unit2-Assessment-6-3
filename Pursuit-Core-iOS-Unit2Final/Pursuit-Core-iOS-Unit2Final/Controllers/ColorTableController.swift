@@ -10,8 +10,13 @@ import UIKit
 
 class ColorTableController: UIViewController {
     
-    // possible property observer, reload data
-    var crayons = [Crayon]()
+    var crayon = Crayon(name: "", red: 0, green: 0, blue: 0, hex: "")
+    
+    var crayons = [Crayon]()    {
+        didSet  {
+            colorTableView.reloadData()
+        }
+    }
     
     // possible instance optional
     

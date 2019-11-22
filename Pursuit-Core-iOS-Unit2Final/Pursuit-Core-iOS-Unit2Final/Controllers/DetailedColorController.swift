@@ -71,12 +71,16 @@ class DetailedColorController: UIViewController {
     }
     
     func resetColor()   {
-        redLabel.text = "R: \(((crayon.red / doubleToCGFloatDenominator) * 100).rounded(.toNearestOrEven) / 100)"
-        greenLabel.text = "G: \(((crayon.green / doubleToCGFloatDenominator) * 100).rounded(.toNearestOrEven) / 100))"
-        blueLabel.text = "B: \(((crayon.blue / doubleToCGFloatDenominator) * 100).rounded(.toNearestOrEven) / 100))"
-        alphaLabel.text = "Alpha: \(realAlphaDefault)"
+        let resetRed = ((crayon.red / doubleToCGFloatDenominator) * 100).rounded(.toNearestOrEven) / 100
+        let resetGreen = ((crayon.green / doubleToCGFloatDenominator) * 100).rounded(.toNearestOrEven) / 100
+        let resetBlue = ((crayon.blue / doubleToCGFloatDenominator) * 100).rounded(.toNearestOrEven) / 100
+        let resetAlpha = realAlphaDefault
+        redLabel.text = "R: \(resetRed)"
+        greenLabel.text = "G: \(resetGreen)"
+        blueLabel.text = "B: \(resetBlue)"
+        alphaLabel.text = "Alpha: \(resetAlpha)"
         colorLabel.text = "\(updatedCrayon.name)"
-        background.backgroundColor = UIColor(displayP3Red: CGFloat(crayon.red), green: CGFloat(crayon.green), blue: CGFloat(crayon.blue), alpha: CGFloat(realAlphaDefault))
+        background.backgroundColor = UIColor(displayP3Red: CGFloat(resetRed), green: CGFloat(resetGreen), blue: CGFloat(resetBlue), alpha: CGFloat(resetAlpha))
     }
     
     @IBAction func redSliderChanged(_ sender: UISlider) {
